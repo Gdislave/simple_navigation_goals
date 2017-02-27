@@ -1,6 +1,8 @@
 #include <ros/ros.h>
 #include <move_base_msgs/MoveBaseAction.h>
 #include <actionlib/client/simple_action_client.h>
+#include <tf/transform_listener.h>
+#include <geometry_msgs/Twist.h>
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> MoveBaseClient;
 
@@ -21,7 +23,8 @@ int main(int argc, char** argv){
 	goal.target_pose.header.frame_id = "base_link";
 	goal.target_pose.header.stamp = ros::Time::now();
 
-	goal.target_pose.pose.position.x = 1.0;
+	goal.target_pose.pose.position.x = 25.0;
+	goal.target_pose.pose.position.y =-7.0;
 	goal.target_pose.pose.orientation.w = 1.0;
 
 	ROS_INFO("Sending goal");
